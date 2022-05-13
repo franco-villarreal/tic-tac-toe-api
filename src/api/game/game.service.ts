@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 
 import { Game } from '../../components';
-import { GameDTO } from '../../dtos';
+import { CreateGameDTO, GameDTO, PlayDTO } from '../../dtos';
 import { ErrorMessage } from '../../enums';
 
 @Injectable()
@@ -34,7 +34,7 @@ export class GameService {
     return game.getGameStatus();
   }
 
-  create(payload: any): GameDTO {
+  create(payload: CreateGameDTO): GameDTO {
     try {
       const { players, starting_player: nextTurn } = payload;
 
@@ -60,7 +60,7 @@ export class GameService {
     }
   }
 
-  play(gameId: string, payload: any): GameDTO {
+  play(gameId: string, payload: PlayDTO): GameDTO {
     try {
       const { column, row, player: playerName } = payload;
       const game = this.findGameById(gameId);

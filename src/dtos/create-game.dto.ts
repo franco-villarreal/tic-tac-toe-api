@@ -1,10 +1,21 @@
-import { IsArray, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  ArrayMaxSize,
+  ArrayMinSize,
+  IsArray,
+  IsOptional,
+  IsString,
+  ValidateNested,
+} from 'class-validator';
 
 import { PlayerDTO } from './player.dto';
 
 export class CreateGameDTO {
-  @IsNotEmpty()
   @IsArray()
+  @ArrayMinSize(2)
+  @ArrayMaxSize(2)
+  @ValidateNested({ each: true })
+  @Type(() => PlayerDTO)
   players: PlayerDTO[];
 
   @IsOptional()

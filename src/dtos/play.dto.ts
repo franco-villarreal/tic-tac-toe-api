@@ -11,5 +11,5 @@ export class PlayDTO {
 
   @IsNotEmpty()
   @IsString()
-  player_name: string;
+  player: string;
 }

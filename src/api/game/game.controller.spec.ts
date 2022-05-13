@@ -113,7 +113,7 @@ describe('GameController', () => {
       const payload = {
         column: 0,
         row: 0,
-        player_name: 'PLAYER_ONE',
+        player: 'PLAYER_ONE',
       };
       const serviceResponse: GameDTO = {
         game_id: 1,

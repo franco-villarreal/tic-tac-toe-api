@@ -8,7 +8,7 @@ import {
   Query,
 } from '@nestjs/common';
 
-import { GameDTO } from '../../dtos';
+import { CreateGameDTO, GameDTO, PlayDTO } from '../../dtos';
 import { GameService } from './game.service';
 
 @Controller('api/game')
@@ -26,12 +26,12 @@ export class GameController {
   }
 
   @Post()
-  create(@Body() payload: any): GameDTO {
+  create(@Body() payload: CreateGameDTO): GameDTO {
     return this.gameService.create(payload);
   }
 
   @Post('/:id')
-  play(@Param('id') id: string, @Body() payload: any): GameDTO {
+  play(@Param('id') id: string, @Body() payload: PlayDTO): GameDTO {
     return this.gameService.play(id, payload);
   }
 
